@@ -1,0 +1,28 @@
+#include<lpc214x.h>
+#include<stdint.h>
+
+/* IR SENSOR IS CONNECTED TO P0.22 */
+/* LED OF P0.21 BLINKS WHEN AN OBSTACLE IS SENSED BY IR SENSOR */
+/* ACTIVE LOW IR SENSOR IS USED HERE */
+
+int main(void)
+{
+IO0DIR = 0x00200000;
+
+while(1)
+{
+if((IO0PIN & (1<<22))==0)
+
+{
+//IO0SET=0x00200000;
+IO0SET=1<<21;
+
+}
+else
+{
+//IO0CLR=0x00200000;
+IO0CLR=1<<21;
+}
+}
+}
+
